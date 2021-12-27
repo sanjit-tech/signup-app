@@ -24,16 +24,16 @@ class SignUp extends Component{
         this.setState({[name]:value})
     }
     validate() {
-        if(!this.state.fullName && !this.state.email.includes('@') && !this.state.phone && !this.state.password){
-           this.setState({fullNameError: 'This Field can not be blank', emailError: 'Invalid Email', phoneError: 'This field is required', passwordError: 'This field is required'})
+        if(!this.state.fullName && !this.state.email.includes('@') && !this.state.phone && !this.state.password.length < 4){
+           this.setState({fullNameError: 'This Field can not be blank', emailError: 'Invalid Email', phoneError: 'This field is required', passwordError: 'Password length should be more than 4'})
         } else if (!this.state.fullName){
             this.setState({fullNameError: 'This Field can not be blank'})
         } else if(!this.state.email.includes('@')){
             this.setState({emailError: 'Invalid Email'})
         }else if(!this.state.phone) {
             this.setState({phoneError: 'This field is required'})
-        }else if(!this.state.password){
-            this.setState({passwordError: 'This field is required'})
+        }else if(!this.state.password.length < 4){
+            this.setState({passwordError: 'Password length should be more than 4'})
         }else {
             return true
         }
