@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Header} from "./components/Header";
+import {BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import SignUp from "./components/SingUp";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <BrowserRouter>
+            <App />
+      </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
