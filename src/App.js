@@ -5,6 +5,7 @@ import {Route, Switch } from 'react-router-dom';
 import SignUp from "./components/SingUp";
 import {Header} from "./components/Header";
 import SignIn from "./components/SignIn";
+import Thanks from "./components/thanks";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Switch>
             <Route path='/' exact component={SignUp}/>
             <Route path='/sign-in' component={SignIn}/>
+            <Route path='/thank-you' component={Thanks}/>
         </Switch>
      </Fragment>
   );
