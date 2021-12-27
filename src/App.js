@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, {Fragment} from "react";
-import {Routes, Route, Switch } from 'react-router-dom';
+import {Route, Switch } from 'react-router-dom';
 import SignUp from "./components/SingUp";
 import {Header} from "./components/Header";
 import SignIn from "./components/SignIn";
