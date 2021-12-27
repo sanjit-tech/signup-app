@@ -20,11 +20,11 @@ class SignIn extends Component{
         this.setState({[name]:value})
     }
     validate() {
-        if(!this.state.email.includes('@') && !this.state.password.length < 4){
+        if(!this.state.email.includes('@') && this.state.password.length < 4){
             this.setState({emailError: 'Invalid Email', passwordError: 'Password length should be more than 4'})
         } else if(!this.state.email.includes('@')){
             this.setState({emailError: 'Invalid Email'})
-        } else if(!this.state.password.length < 4){
+        } else if(this.state.password.length < 4){
             this.setState({passwordError: 'Password length should be more than 4'})
         }else {
             return true
@@ -34,9 +34,8 @@ class SignIn extends Component{
         e.preventDefault()
         if(this.validate()){
             this.props.history.push('/thank-you')
+            this.setState({email: '',password: '' ,})
         }
-        this.setState({email: '',password: '' ,})
-
     }
     render(){
         const {email,  password, emailError, passwordError} = this.state
