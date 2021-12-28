@@ -2,11 +2,31 @@ import React, {Component, Fragment} from "react";
 import './../App.css';
 import {Header} from "./Header";
 import {Link} from "react-router-dom";
+import $ from "jquery";
+export function SignUpSuccessMessageDialog({message}) {
+    return(
+        <div className="modal fade" id="sing_up">
+            <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body">
+                        <h4 className="text-center text-success">{message}</h4>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    )
+
+}
 class SignUp extends Component{
     constructor(props){
         super(props)
-        debugger
         this.state = {
            fullName: '',
            email: '',
@@ -41,8 +61,9 @@ class SignUp extends Component{
     submitData =(e)=>{
         e.preventDefault()
         if(this.validate()){
-            this.props.history.push('/thank-you')
-            this.setState({fullName: '', email: '', phone: '', password: '' ,})
+           $('#sign_up_modal').click()
+            // this.props.history.push('/thank-you')
+            this.setState({fullName: '', email: '', phone: '', password: '' , fullNameError: '', emailError: '', phoneError: '', passwordError: '' ,})
         }
     }
     render(){
@@ -87,6 +108,8 @@ class SignUp extends Component{
                 </div>
             </div>
             </div>
+            <p id="sign_up_modal" data-bs-toggle="modal" data-bs-target="#sing_up"> </p>
+             <SignUpSuccessMessageDialog message={`You have signed up successfully`}/>
         </div>
         )
     }

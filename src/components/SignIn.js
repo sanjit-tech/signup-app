@@ -2,11 +2,12 @@ import React, {Component, Fragment} from "react";
 import './../App.css';
 import {Header} from "./Header";
 import {Link} from "react-router-dom";
+import $ from "jquery";
+import {SignUpSuccessMessageDialog} from "./SingUp";
 
 class SignIn extends Component{
     constructor(props){
         super(props)
-        debugger
         this.state = {
             email: '',
             password: '' ,
@@ -33,8 +34,9 @@ class SignIn extends Component{
     submitData =(e)=>{
         e.preventDefault()
         if(this.validate()){
-            this.props.history.push('/thank-you')
-            this.setState({email: '',password: '' ,})
+            $('#sign_in_modal').click()
+            // this.props.history.push('/thank-you')
+            this.setState({email: '',password: '' ,emailError: '',  passwordError: '' })
         }
     }
     render(){
@@ -60,10 +62,12 @@ class SignIn extends Component{
                             </div>
                             <p className="text-danger">{passwordError && passwordError}</p>
                             <button className="btn btn-primary" onClick={this.submitData}>Submit</button>
-                            <h5 className="mt-4">Do not have an Account? <Link className="btn btn-link" to="/sign-in">Sign Up</Link></h5>
+                            <h5 className="mt-4">Do not have an Account? <Link className="btn btn-link" to="/">Sign Up</Link></h5>
                         </div>
                     </div>
                 </div>
+                <p id="sign_in_modal" data-bs-toggle="modal" data-bs-target="#sing_up"> </p>
+                <SignUpSuccessMessageDialog message={`You have logged in successfully`}/>
             </div>
         )
     }
